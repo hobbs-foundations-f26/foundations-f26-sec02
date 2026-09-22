@@ -33,21 +33,21 @@ popped_course = courses.pop()
 print(f"Popped item: '{popped_course}', Remaining: {courses}")
 
 
-# # # ==========================================
-# # # 2. LIST METHODS: ORDERING & UTILITIES
-# # # ==========================================
-# print("\n--- 2. List Ordering & Utilities ---")
-# scores = [88, 92, 75, 100, 64]
+# ==========================================
+# 2. LIST METHODS: ORDERING & UTILITIES
+# ==========================================
+print("\n--- 2. List Ordering & Utilities ---")
+scores = [88, 92, 75, 100, 64]
 
-# # Sorting in place vs sorted() builtin
-# scores.sort()  # Modifies original list
-# print(f"Sorted ascending: {scores}")
+# Sorting in place vs sorted() builtin
+scores.sort()  # Modifies original list (changes are retained after this line)
+print(f"Sorted ascending: {scores}")
 
-# scores.sort(reverse=True)
-# print(f"Sorted descending: {scores}")
+scores.sort(reverse=True)
+print(f"Sorted descending: {scores}")
 
-# print(f"Count of 100s: {scores.count(100)}")
-# print(f"Index of score 92: {scores.index(92)}")
+print(f"Count of 100s: {scores.count(100)}")
+print(f"Index of score 92: {scores.index(92)}")
 
 # # FAILS: Trying to sort a list containing mixed, incompatible data types
 # # NOTE: strings can hold ***MIXED*** types in python

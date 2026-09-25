@@ -5,7 +5,6 @@ print("--- 0. Lists: Creation & Mutability ---")
 courses = ["Python", "MIS", "Business Analytics"]
 print(f"Original courses list: {courses}")
 
-
 # Lists are mutable: elements can be modified in place
 courses[1] = "Information System Security"
 print(f"Modified courses list: {courses}")
@@ -15,7 +14,7 @@ print(f"Modified courses list: {courses}")
 # 1. LIST METHODS: ADDING & REMOVING
 # ==========================================
 print("\n--- 1. List Methods (Add/Remove) ---")
-# .append() adds an item to the end
+# .append() adds an item to the end by it's value
 courses.append("Database Management")
 print(f"After append: {courses}")
 
@@ -35,46 +34,48 @@ print(f"Popped item: '{popped_course}', Remaining: {courses}")
 # ==========================================
 # 2. LIST METHODS: ORDERING & UTILITIES
 # ==========================================
-# print("\n--- 2. List Ordering & Utilities ---")
-# scores = [88, 92, 75, 100, 64]
+print("\n--- 2. List Ordering & Utilities ---")
+scores = [88, 92, 75, 100, 64]
 
-# # Sorting in place vs sorted() builtin
-# scores.sort()  # Modifies original list
-# print(f"Sorted ascending: {scores}")
+# Sorting in place vs sorted() builtin
+scores.sort()  # Modifies original list
+print(f"Sorted ascending: {scores}")
 
-# scores.sort(reverse=True)
-# print(f"Sorted descending: {scores}")
+scores.sort(reverse=True)
+print(f"Sorted descending: {scores}")
 
-# print(f"Count of 100s: {scores.count(100)}")
-# print(f"Index of score 92: {scores.index(92)}")
+print(f"Count of 100s: {scores.count(100)}")
+print(f"Index of score 92: {scores.index(92)}")
 
-# # FAILS: Trying to sort a list containing mixed, incompatible data types
-# # mixed_list = [42, "Python", True]
-# # mixed_list.sort()  # TypeError: '<' not supported between instances of 'str' and 'int'
+# FAILS: Trying to sort a list containing mixed, incompatible data types
+# mixed_list = [42, "Python", True]
+# mixed_list.sort()  # TypeError: '<' not supported between instances of 'str' and 'int'
 
 
-# # ==========================================
-# # 3. INDEXING & SLICING (Same mechanics as strings)
-# # ==========================================
-# print("\n--- 3. List Indexing & Slicing ---")
-# data = [10, 20, 30, 40, 50, 60]
-# print(f'Be sure to know which [] you\'re looking at {[10, 20, 30, 40, 50, 60][5]}')
-# print(f"First element: {data[0]}")
-# print(f"Slice index 1 to 4: {data[1:4]}")
-# print(f"Reversed list via slicing: {data[::-1]}")
+# ==========================================
+# 3. INDEXING & SLICING (Same mechanics as strings)
+# ==========================================
+print("\n--- 3. List Indexing & Slicing ---")
+data = [10, 20, 30, 40, 50, 60]
+print(f'Be sure to know which [] you\'re looking at {[10, 20, 30, 40, 50, 60][5]}')
+print(f"First element: {data[0]}")
+print(f"Slice index 1 to 4: {data[1:4]}")
+print(f"Reversed list via slicing: {data[::-1]}")
+
+print(f'This is valid python {[42][0]=}')
 
 
 # # ==========================================
 # # 4. TUPLES: IMMUTABLE SEQUENCES
 # # ==========================================
-# print("\n--- 4. Tuples ---")
-# # Defined using parentheses (). Immutable: cannot be altered, appended, or sorted.
-# professor = ("Nathaniel", "Hobbs", "Rutgers")
-# print(f"Professor tuple: {professor}")
-# print(f"First name: {professor[0]}")
+print("\n--- 4. Tuples ---")
+# Defined using parentheses (). Immutable: cannot be altered, appended, or sorted.
+professor = ("Nathaniel", "Hobbs", "Rutgers")
+print(f"Professor tuple: {professor}")
+print(f"First name: {professor[0]}")
 
-# # FAILS: Tuples do not support item assignment (Immutability)
-# # professor[0] = "Nat"  # TypeError: 'tuple' object does not support item assignment
+# FAILS: Tuples do not support item assignment (Immutability)
+# professor[0] = "Nat"  # TypeError: 'tuple' object does not support item assignment
 
 
 # # ==========================================
@@ -94,57 +95,63 @@ print(f"Popped item: '{popped_course}', Remaining: {courses}")
 # # ==========================================
 # # 6. REFERENCES, ALIASING, & COPYING
 # # ==========================================
-# print("\n--- 6. References & Aliasing Pitfall ---")
-# original_list = [1, 2, 3]
-# alias_list = original_list  # Points to the exact same object in memory!
-# alias_list.append(4)
+print("\n--- 6. References & Aliasing Pitfall ---")
+original_list = [1, 2, 3]
+alias_list = original_list  # Points to the exact same object in memory!
+alias_list.append(4)
 
-# print(f"Original list modified via alias: {original_list}")  # [1, 2, 3, 4]!
+print(f"Original list modified via alias: {original_list}")  # [1, 2, 3, 4]!
 
-# # Proper way to clone/copy a list
-# true_copy = original_list.copy()
-# true_copy.append(5)
-# print(f"Original list safe: {original_list}")
-# print(f"True copy modified: {true_copy}")
+# Proper way to clone/copy a list
+true_copy = original_list.copy()
+true_copy.append(5)
+print(f"Original list safe: {original_list}")
+print(f"True copy modified: {true_copy}")
 
 # # ==========================================
 # # 7. APPEND() VS EXTEND()
 # # ==========================================
-# print("\n--- 1. Append vs Extend (Common Pitfall) ---")
-# # This is a very common beginner mistake
-# list_a = [1, 2, 3]
-# list_b = [1, 2, 3]
-# new_elements = [4, 5]
+print("\n--- 1. Append vs Extend (Common Pitfall) ---")
+# This is a very common beginner mistake
+list_a = [1, 2, 3]
+new_elements = [4, 5]
 
-# # .append() adds the ENTIRE object as a single new element
-# list_a.append(new_elements)
-# print(f"After append(): {list_a}")
-# print(f"Notice the nested list: length is {len(list_a)}")
+# .append() adds the ENTIRE object as a single new element
+list_a.append(new_elements)
+print(f"After append(): {list_a}")
+print(f"Notice the nested list: length is {len(list_a)}")
 
-# # .extend() unpacks the elements and adds them individually
-# list_b.extend(new_elements)
-# print(f"After extend(): {list_b}")
-# print(f"Notice it stays flat: length is {len(list_b)}")
+# NOTE: list_a now contains a "nested list", i.e. a list within a list
+print(f"playing with indexing and nested lists: {[1, 2, 3, [4, 5]][0]=}")
+print(f"playing with indexing and nested lists: {[1, 2, 3, [4, 5]][-1]=}")
+print(f"playing with indexing and nested lists: {[1, 2, 3, [4, 5]][-1][0]=}")
 
-# # ==========================================
-# # 8. NESTED LISTS & 2D INDEXING
-# # ==========================================
-# print("--- 0. Nested Lists & 2D Indexing ---")
-# # Lists can contain other lists, creating matrices or grids
-# gradebook = [
-#     ["Ptolemy", 95, 92],  # Row 0
-#     ["Emily", 88, 91],    # Row 1
-#     ["Victor", 76, 85]    # Row 2
-# ]
-# gradebook = [["Ptolemy", 95, 92], ["Emily", 88, 91], ["Victor", 76, 85] ]
-# # Accessing a whole row
-# print(f"Emily's full record: {gradebook[1]}")
+list_b = [1, 2, 3]
+new_elements = [4, 5]
+# .extend() unpacks the elements and adds them individually
+list_b.extend(new_elements)
+print(f"After extend(): {list_b}")
+print(f"Notice it stays flat: length is {len(list_b)}")
 
-# # Chaining brackets to access a specific element [row][column]
-# print(f"Emily's first exam score: {gradebook[1][1]}")
+# ==========================================
+# 8. NESTED LISTS & 2D INDEXING
+# ==========================================
+print("--- 0. Nested Lists & 2D Indexing ---")
+# Lists can contain other lists, creating matrices or grids
+gradebook = [
+    ["Ptolemy", 95, 92],  # Row 0
+    ["Emily", 88, 91],    # Row 1
+    ["Victor", 76, 85]    # Row 2
+]
+gradebook = [["Ptolemy", 95, 92], ["Emily", 88, 91], ["Victor", 76, 85] ]
+# Accessing a whole row
+print(f"Emily's full record: {gradebook[1]}")
 
-# # Mutating an element inside a nested list
-# gradebook[2][2] = 89  # Updating Victor's second exam score
-# print(f"Victor's updated record: {gradebook[2]}")
+# Chaining brackets to access a specific element [row][column]
+print(f"Emily's first exam score: {gradebook[1][1]}")
+
+# Mutating an element inside a nested list
+gradebook[2][2] = 89  # Updating Victor's second exam score
+print(f"Victor's updated record: {gradebook[2]}")
 
 

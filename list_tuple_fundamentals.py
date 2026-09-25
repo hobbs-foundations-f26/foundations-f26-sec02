@@ -1,11 +1,10 @@
-# A lecture script covering Python Lists and Tuples, mutability, and methods.
-
 # ==========================================
 # 0. LISTS: CREATION & MUTABILITY
 # ==========================================
 print("--- 0. Lists: Creation & Mutability ---")
 courses = ["Python", "MIS", "Business Analytics"]
-print(f'Original Course List {courses}')
+print(f"Original courses list: {courses}")
+
 
 # Lists are mutable: elements can be modified in place
 courses[1] = "Information System Security"
@@ -24,8 +23,8 @@ print(f"After append: {courses}")
 courses.insert(0, "Foundations")
 print(f"After insert: {courses}")
 
-# .remove() deletes the first matching ***VALUE***
-courses.remove("Python") if "Python" in courses else None
+# .remove() deletes the first matching value
+courses.remove("MIS") if "MIS" in courses else None
 print(f"After remove: {courses}")
 
 # .pop() removes and returns an item by index (default is the last item)
@@ -36,37 +35,36 @@ print(f"Popped item: '{popped_course}', Remaining: {courses}")
 # ==========================================
 # 2. LIST METHODS: ORDERING & UTILITIES
 # ==========================================
-print("\n--- 2. List Ordering & Utilities ---")
-scores = [88, 92, 75, 100, 64]
+# print("\n--- 2. List Ordering & Utilities ---")
+# scores = [88, 92, 75, 100, 64]
 
-# Sorting in place vs sorted() builtin
-scores.sort()  # Modifies original list (changes are retained after this line)
-print(f"Sorted ascending: {scores}")
+# # Sorting in place vs sorted() builtin
+# scores.sort()  # Modifies original list
+# print(f"Sorted ascending: {scores}")
 
-scores.sort(reverse=True)
-print(f"Sorted descending: {scores}")
+# scores.sort(reverse=True)
+# print(f"Sorted descending: {scores}")
 
-print(f"Count of 100s: {scores.count(100)}")
-print(f"Index of score 92: {scores.index(92)}")
+# print(f"Count of 100s: {scores.count(100)}")
+# print(f"Index of score 92: {scores.index(92)}")
 
 # # FAILS: Trying to sort a list containing mixed, incompatible data types
-# # NOTE: strings can hold ***MIXED*** types in python
-# # mixed_list = [42, "Python", True] 
-# # print(mixed_list)
+# # mixed_list = [42, "Python", True]
 # # mixed_list.sort()  # TypeError: '<' not supported between instances of 'str' and 'int'
 
 
-# # # ==========================================
-# # # 3. INDEXING & SLICING (Same mechanics as strings)
-# # # ==========================================
+# # ==========================================
+# # 3. INDEXING & SLICING (Same mechanics as strings)
+# # ==========================================
 # print("\n--- 3. List Indexing & Slicing ---")
 # data = [10, 20, 30, 40, 50, 60]
+# print(f'Be sure to know which [] you\'re looking at {[10, 20, 30, 40, 50, 60][5]}')
 # print(f"First element: {data[0]}")
 # print(f"Slice index 1 to 4: {data[1:4]}")
 # print(f"Reversed list via slicing: {data[::-1]}")
 
 
-# # # ==========================================
+# # ==========================================
 # # 4. TUPLES: IMMUTABLE SEQUENCES
 # # ==========================================
 # print("\n--- 4. Tuples ---")
@@ -83,23 +81,7 @@ print(f"Index of score 92: {scores.index(92)}")
 # # 5. TUPLE UNPACKING
 # # ==========================================
 # print("\n--- 5. Tuple Unpacking ---")
-
-# professor = ("Nathaniel", "Hobbs", "Rutgers")
-
-# # instead of this:
-# first = professor[0]
-# last = professor[1]
-# institution = professor[2]
-# # you can simplify to this:
 # first, last, institution = professor
-
-# # NOTE: if you are variable unpacking, every element must be accounted for:
-# professor = ("Nathaniel", "Hobbs", "Rutgers")
-# # first,last = professor # ValueError: too many values to unpack (expected 2, got 3)
-
-# # if you don't care about a value, you can have it ignored with a place holder
-# _, last, _ = professor # "Rutgers" get's "thrown away"
-
 # print(f"Unpacked variables -> First: {first}, Last: {last}, School: {institution}")
 
 # # Variable swapping is clean via tuple packaging/unpacking
@@ -124,3 +106,45 @@ print(f"Index of score 92: {scores.index(92)}")
 # true_copy.append(5)
 # print(f"Original list safe: {original_list}")
 # print(f"True copy modified: {true_copy}")
+
+# # ==========================================
+# # 7. APPEND() VS EXTEND()
+# # ==========================================
+# print("\n--- 1. Append vs Extend (Common Pitfall) ---")
+# # This is a very common beginner mistake
+# list_a = [1, 2, 3]
+# list_b = [1, 2, 3]
+# new_elements = [4, 5]
+
+# # .append() adds the ENTIRE object as a single new element
+# list_a.append(new_elements)
+# print(f"After append(): {list_a}")
+# print(f"Notice the nested list: length is {len(list_a)}")
+
+# # .extend() unpacks the elements and adds them individually
+# list_b.extend(new_elements)
+# print(f"After extend(): {list_b}")
+# print(f"Notice it stays flat: length is {len(list_b)}")
+
+# # ==========================================
+# # 8. NESTED LISTS & 2D INDEXING
+# # ==========================================
+# print("--- 0. Nested Lists & 2D Indexing ---")
+# # Lists can contain other lists, creating matrices or grids
+# gradebook = [
+#     ["Ptolemy", 95, 92],  # Row 0
+#     ["Emily", 88, 91],    # Row 1
+#     ["Victor", 76, 85]    # Row 2
+# ]
+# gradebook = [["Ptolemy", 95, 92], ["Emily", 88, 91], ["Victor", 76, 85] ]
+# # Accessing a whole row
+# print(f"Emily's full record: {gradebook[1]}")
+
+# # Chaining brackets to access a specific element [row][column]
+# print(f"Emily's first exam score: {gradebook[1][1]}")
+
+# # Mutating an element inside a nested list
+# gradebook[2][2] = 89  # Updating Victor's second exam score
+# print(f"Victor's updated record: {gradebook[2]}")
+
+

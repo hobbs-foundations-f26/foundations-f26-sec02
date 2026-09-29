@@ -174,8 +174,9 @@ Sometime's that's what people want.
 # print(f"Capitalize: {clean_string.capitalize()}") # Only first letter of string
 
 # NOTE: Methods don't change the original variable unless reassigned
-# clean_string.upper()
-# print(clean_string) # Still lowercase! Must do: clean_string = clean_string.upper()
+clean_string = "   data analytics   ".strip()
+clean_string.upper() # this change is NOT retained after this line
+print(clean_string) # Still lowercase! Must do: clean_string = clean_string.upper()
 
 
 # # ==========================================
@@ -221,12 +222,15 @@ csv_data = "apple,banana,cherry"
 fruit_list = csv_data.split(",")
 print(f"Split by comma: {fruit_list}")
 
+# split has a default of ' '
+print(f'Split with explicit input'.split(' '))
+print(f'Split with implicit (default) input'.split())
 
 
-# # list() casts a string into a list of individual characters
+# list() casts a string into a list of individual characters
 print(f"Characters list: {list('apple')}")
 
-# # .join() combines a list of strings using a string as the "glue"
+# .join() combines a list of strings using a string as the "glue"
 sentence_words = ["Python", "is", "great"]
 print(f"Joined with spaces: {' '.join(sentence_words)}")
 print(f"Joined with dashes: {'-----'.join(sentence_words)}")

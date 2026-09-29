@@ -78,16 +78,17 @@ print(f"list_a is list_b (Same object in memory?): {list_a is list_b}")  # False
 print(f"list_a is list_c (Same object in memory?): {list_a is list_c}")  # True
 
 
-# ==========================================
-# 5. SHORT-CIRCUIT EVALUATION
-# ==========================================
-# print("\n--- 5. Short-Circuit Evaluation ---")
-# # Python stops evaluating logical expressions as soon as the outcome is determined.
-# x = 0
-# y = 10
+# For now a preview, we will return when we talk about conditionals
+# # ==========================================
+# # 5. SHORT-CIRCUIT EVALUATION
+# # ==========================================
+# # print("\n--- 5. Short-Circuit Evaluation ---")
+# # # Python stops evaluating logical expressions as soon as the outcome is determined.
+# # x = 0
+# # y = 10
 
-# # Safe division because the first condition fails, so the second isn't evaluated (avoids ZeroDivisionError)
-# if x != 0 and (y / x > 1):
-#     print("Condition met")
-# else:
-#     print("Short-circuited safely without ZeroDivisionError.")
+# # # Safe division because the first condition fails, so the second isn't evaluated (avoids ZeroDivisionError)
+# # if x != 0 and (y / x > 1):
+# #     print("Condition met")
+# # else:
+# #     print("Short-circuited safely without ZeroDivisionError.")

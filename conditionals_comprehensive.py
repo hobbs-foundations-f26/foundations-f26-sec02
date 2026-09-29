@@ -192,12 +192,29 @@ else:
 # # ==========================================
 # print("\n--- 10. Assignment Expressions (Walrus) ---")
 # # Assigns a value and evaluates it in a single expression.
-# data_payload = "Rutgers Business School"
+# # think of it like "check this variable, which *btw* equals this"
+# roster = ["Alice", "Bob", "Eve"]
+# student_count = len(roster)
+# if student_count > 50:
+#     print(f"Large lecture: {student_count} students")
 
 # # Assign and check simultaneously
-# if (n := len(data_payload)) > 15:
-#     print(f"Walrus: String is long ({n} chars)")
+# if (student_count := len(roster)) > 50:
+#     print(f"Large lecture: {student_count} students")
 
+# It eliminates the need to initialize a variable before 
+# a loop and then redundantly reassign it at the bottom 
+# of the loop.
+# You have to write input() twice
+# user_input = input("Enter a command (or 'quit'): ")
+# while user_input != "quit":
+#     print(f"Executing {user_input}")
+#     user_input = input("Enter a command (or 'quit'): ")
+
+# with walrus(cleaner)
+# Assigned and evaluated simultaneously
+# while (user_input := input("Enter a command (or 'quit'): ")) != "quit":
+#     print(f"Executing {user_input}")
 
 # # ==========================================
 # # 11. ALL() AND ANY() WITH ITERABLES

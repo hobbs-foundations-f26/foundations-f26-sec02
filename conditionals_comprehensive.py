@@ -216,44 +216,44 @@ else:
 # while (user_input := input("Enter a command (or 'quit'): ")) != "quit":
 #     print(f"Executing {user_input}")
 
-# # ==========================================
-# # 11. ALL() AND ANY() WITH ITERABLES
-# # ==========================================
-# print("\n--- 11. all() and any() ---")
-# prereqs = [True, True, False]
+# ==========================================
+# 11. ALL() AND ANY() WITH ITERABLES
+# ==========================================
+print("\n--- 11. all() and any() ---")
+prereqs = [True, "this truthy", 0.0] # this behaves like [True, True, False]
 
-# # all() returns True only if EVERY element is Truthy
-# if all(prereqs):
-#     print("Student has met all prerequisites.")
-# else:
-#     print("Missing some prerequisites.")
+# all() returns True only if EVERY element is Truthy
+if all(prereqs):
+    print("Student has met all prerequisites.")
+else:
+    print("Missing some prerequisites.")
 
-# # any() returns True if AT LEAST ONE element is Truthy
-# if any(prereqs):
-#     print("Student has met at least one prerequisite.")
+# any() returns True if AT LEAST ONE element is Truthy
+if any(prereqs):
+    print("Student has met at least one prerequisite.")
 
 
-# # ==========================================
-# # 12. COMMON ERRORS & PITFALLS
-# # ==========================================
-# print("\n--- 12. Common Errors ---")
+# ==========================================
+# 12. COMMON ERRORS & PITFALLS
+# ==========================================
+print("\n--- 12. Common Errors ---")
 
-# # FAILS: IndentationError (Python relies entirely on whitespace for code blocks)
-# # if grade > 50:
-# # print("You passed!") # IndentationError: expected an indented block
+# FAILS: IndentationError (Python relies entirely on whitespace for code blocks)
+# if grade > 50:
+# print("You passed!") # IndentationError: expected an indented block
 
-# # FAILS: Using '=' (assignment) instead of '==' (equality check)
-# # if user_role = "admin": # SyntaxError: invalid syntax
-# #     print("Admin")
+# FAILS: Using '=' (assignment) instead of '==' (equality check)
+# if user_role = "admin": # SyntaxError: invalid syntax
+#     print("Admin")
 
-# # FAILS: Using 'else if' instead of 'elif'
-# # if grade >= 90:
-# #     print("A")
-# # else if grade >= 80: # SyntaxError: invalid syntax
-# #     print("B")
+# FAILS: Using 'else if' instead of 'elif'
+# if grade >= 90:
+#     print("A")
+# else if grade >= 80: # SyntaxError: invalid syntax
+#     print("B")
 
-# # FAILS: Missing the pass statement leaves an empty block
-# # if is_maintenance_window:
-# #                 # Python expects code here!
-# # else:           # IndentationError: expected an indented block
-# #     print("System operating normally.")
+# FAILS: Missing the pass statement leaves an empty block
+# if is_maintenance_window:
+#                 # Python expects code here!
+# else:           # IndentationError: expected an indented block
+#     print("System operating normally.")

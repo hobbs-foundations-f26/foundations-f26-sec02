@@ -28,6 +28,13 @@ print("range(5):", list(range(5)))          # 0, 1, 2, 3, 4 (default start is 0)
 # ==========================================
 print("\n--- 1. Basic For Loops (Lists) ---")
 
+# the grammar for a for loop is:
+# for <iterator> in <iteratable>:
+#    do this
+#    and this
+#    and this
+#    for each iterator
+
 # you can print the numbers in a sequence
 for number in range(300):
     print(number)
@@ -73,9 +80,17 @@ enrollment = {"Python": 45, "Databases": 120, "Security": 35}
 for course in enrollment:
     print(f"Course: {course}")
 
+# Explicitly iterating over keys using .keys()
+for course in enrollment.keys():
+    print(f"Course: {course}")
+
+# Iterating over values using .values()
+for students in enrollment.values():
+    print(f"this entry has {students} students enrolled.")
+
 # Iterating over both keys and values using .items() - VERY COMMON
-for course, students in enrollment.items():
-    print(f"{course} has {students} students enrolled.")
+for key, value in enrollment.items():
+    print(f"{key} has {value} students enrolled.")
 
 
 # ==========================================
@@ -88,80 +103,104 @@ print("\n--- 4. While Loops ---")
 inventory = 3
 while inventory > 0:
     print(f"Selling item... {inventory} remaining.")
+    inventory -= 1
 print("Out of stock!")
 
 
-# # # ==========================================
-# # # 5. LOOP CONTROL (break, continue)
-# # # ==========================================
-# # print("\n--- 5. Loop Control (break, continue) ---")
+# ==========================================
+# 5. LOOP CONTROL (break, continue)
+# ==========================================
+print("\n--- 5. Loop Control (break, continue) ---")
 
-# # # break: Exits the loop completely, skipping any remaining iterations
-# # print("Demonstrating 'break':")
-# # for num in range(1, 10):
-# #     if num == 4:
-# #         print("Hit 4, breaking out of loop!")
-# #         break
-# #     print(num)
+# break: Exits the loop completely, skipping any remaining iterations
+print("Demonstrating 'break':")
+for num in range(1, 10):
+    if num == 4:
+        print("Hit 4, breaking out of loop!")
+        break
+    print(num)
 
-# # # continue: Skips the rest of the CURRENT iteration and moves to the next one
-# # print("\nDemonstrating 'continue':")
-# # for num in range(1, 6):
-# #     if num == 3:
-# #         print("Skipping 3!")
-# #         continue
-# #     print(num)
-
-
-# # # ==========================================
-# # # 6. THE LOOP 'ELSE' CLAUSE (Python Specific)
-# # # ==========================================
-# # print("\n--- 6. The Loop 'else' Clause ---")
-# # # The 'else' block runs ONLY if the loop finishes completely without hitting a 'break'.
-# # # Think of it as the "no-break" clause. Excellent for search operations.
-
-# # target_id = 99
-# # student_ids = [10, 20, 30, 40]
-
-# # for sid in student_ids:
-# #     if sid == target_id:
-# #         print(f"Found student ID {target_id}!")
-# #         break
-# # else:
-# #     # This runs because the loop finished without breaking
-# #     print(f"Student ID {target_id} was not found in the roster.")
+# continue: Skips the rest of the CURRENT iteration and moves to the next one
+print("\nDemonstrating 'continue':")
+for num in range(1, 6):
+    if num == 3:
+        print("Skipping 3!")
+        continue
+    print(num)
 
 
-# # # ==========================================
-# # # 7. NESTED LOOPS
-# # # ==========================================
-# # print("\n--- 7. Nested Loops ---")
-# # # Loops inside of loops. The inner loop finishes all its iterations for EVERY single outer loop iteration.
-# # terms = ["Fall", "Spring"]
-# # classes = ["Python", "Stats"]
+# ==========================================
+# 6. THE LOOP 'ELSE' CLAUSE (Python Specific)
+# ==========================================
+print("\n--- 6. The Loop 'else' Clause ---")
+# The 'else' block runs ONLY if the loop finishes completely without hitting a 'break'.
+# Think of it as the "no-break" clause. Excellent for search operations.
 
-# # for term in terms:
-# #     print(f"--- {term} Term ---")
-# #     for cls in classes:
-# #         print(f"Teaching: {cls}")
+target_id = 99
+student_ids = [10, 20, 30, 40]
+
+for sid in student_ids:
+    if sid == target_id:
+        print(f"Found student ID {target_id}!")
+        break
+else:
+    # This runs because the loop finished without breaking
+    print(f"Student ID {target_id} was not found in the roster.")
 
 
-# # # ==========================================
-# # # 8. PYTHONIC ITERATION: enumerate() & zip()
-# # # ==========================================
-# # print("\n--- 8. Pythonic Iteration (enumerate & zip) ---")
+# ==========================================
+# 7. NESTED LOOPS
+# ==========================================
+print("\n--- 7. Nested Loops ---")
+# Loops inside of loops. The inner loop finishes all its iterations for EVERY single outer loop iteration.
+terms = ["Fall", "Spring"]
+classes = ["Python", "Stats"]
 
-# # # enumerate(): Gets both the index and the value at the same time.
-# # # Much cleaner than doing: for i in range(len(list))
-# # top_companies = ["Apple", "Microsoft", "Nvidia"]
-# # for rank, company in enumerate(top_companies, start=1):
-# #     print(f"Rank {rank}: {company}")
+for term in terms:
+    print(f"--- {term} Term ---")
+    for cls in classes:
+        print(f"Teaching: {cls}")
 
-# # # zip(): Iterates through multiple lists in parallel, stopping at the shortest one.
-# # names = ["Ptolemy", "Emily", "Victor"]
-# # grades = ["A", "A", "B"]
-# # for name, grade in zip(names, grades):
-# #     print(f"{name} earned an {grade}")
+# nested loops are an easy way to work in multiple dimensions
+# For example, in 2d, like a table/matrix
+for i in range(10): # think of this as the rows
+    for j in range(5): # think of this as the columns
+        print('*', end=' ')
+    print()
+
+# nested loops are also useful for finding any
+# matching pairs (iterating through all possible pairs)
+my_string = 'This is some string'
+
+found = False # this is a "flag" for breaking out of outer loop
+for i in range(len(my_string)):
+    for j in range(i+1,len(my_string)):
+        if my_string[i] == my_string[j]:
+            print(f'found a match {my_string[i]} at indices {i} and {j}')
+            found = True
+            break # break after first match
+    if found:
+        break
+
+
+# ==========================================
+# 8. PYTHONIC ITERATION: enumerate() & zip()
+# ==========================================
+print("\n--- 8. Pythonic Iteration (enumerate & zip) ---")
+
+# enumerate(): Gets both the index and the value from an array at the same time.
+# Much cleaner than doing: for i in range(len(list))
+top_companies = ["Apple", "Microsoft", "Nvidia"]
+# enumerate will create something like [(0, "Apple"), (1, "Microsoft"), (2, "Nvidia")]
+for idx, value in enumerate(top_companies):
+    print(f"Rank {idx}: {value}")
+
+# zip(): Iterates through multiple lists in parallel, stopping at the shortest one.
+names = ["Ptolemy", "Emily", "Victor", "this will not be paired"]
+grades = ["A", "A", "B"]
+# zip will create something like [("Ptolemy", "A"), ("Emily", "A"), ("Victor", B)]
+for name, grade in zip(names, grades):
+    print(f"{name} earned an {grade}")
 
 
 # # # ==========================================

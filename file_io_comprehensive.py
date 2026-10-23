@@ -19,11 +19,12 @@ print("--- 0. The 'with' Statement ---")
 print("\n--- 1. Writing to Files ('w' mode) ---")
 # DANGER: 'w' mode will completely OVERWRITE an existing file. 
 # If the file doesn't exist, it creates a new one.
+# If the file does exist, it is deleted and re-written.
 
 # Writing a single string
 with open("roster.txt", "w") as f:
-    f.write("Line one:\n")
-    f.write("Line two\n")
+    f.write("New Line one:\n")
+    f.write("New Line two\n")
     # f.read() # this would FAIL b/c no read permission
 print("Created and wrote to roster.txt")
 
@@ -47,6 +48,8 @@ with open("roster.txt", "a") as f:
     # NOTE: You must manually add newline characters (\n)! 
     # Python does not add them automatically.
     f.write("5. Sarah\n")
+    # NOTE: the above two lines could be rewritten as one line
+    # f.write("4. Nathaniel\n5. Sarah\n")
 print("Appended new students to roster.txt")
 
 
@@ -59,6 +62,7 @@ print("\n--- 3. Reading Files ('r' mode) ---")
 print("Method A: .read() (Loads entire file into one string)")
 with open("roster.txt", "r") as f:
     entire_file = f.read()
+    # entire_file = "2. Emily\n3. Victor\n4. Nathaniel\n5. Sarah\n"
     print(entire_file)
 
 print("Method B: .readlines() (Loads every line into a List)")
@@ -66,49 +70,49 @@ with open("roster.txt", "r") as f:
     lines_list = f.readlines()
     print(f"List format: {lines_list}")
 
-    # make ['2. Emily', '3. Victor', '4. Nathaniel', '5. Sarah']
-    clean_lines_list = [line.strip() for line in lines_list]
-    print(f"List format: {clean_lines_list}")
+#     # make ['2. Emily', '3. Victor', '4. Nathaniel', '5. Sarah']
+#     clean_lines_list = [line.strip() for line in lines_list]
+#     print(f"List format: {clean_lines_list}")
 
 
 
-# ==========================================
-# 4. MEMORY-EFFICIENT READING (For Massive Files)
-# ==========================================
-print("\n--- 4. Memory-Efficient Reading ---")
-# If you have a 5GB CSV file, .read() or .readlines() will crash your computer's RAM.
-# Instead, iterate directly over the file object. It yields one line at a time.
+# # ==========================================
+# # 4. MEMORY-EFFICIENT READING (For Massive Files)
+# # ==========================================
+# print("\n--- 4. Memory-Efficient Reading ---")
+# # If you have a 5GB CSV file, .read() or .readlines() will crash your computer's RAM.
+# # Instead, iterate directly over the file object. It yields one line at a time.
 
-print("Iterating directly over the file object:")
-with open("roster.txt", "r") as f:
-    for line in f:
-        # .strip() removes the invisible newline character (\n) from the print output
-        print(f"Processing: {line.strip()}")
-
-
-# ==========================================
-# 5. COMMON ERRORS
-# ==========================================
-# print("\n--- 5. Common Errors ---")
-
-# # FAILS: Trying to write to a file opened in read mode
+# print("Iterating directly over the file object:")
 # with open("roster.txt", "r") as f:
-#     f.write("6. John\n") # io.UnsupportedOperation: not writable
+#     for line in f:
+#         # .strip() removes the invisible newline character (\n) from the print output
+#         print(f"Processing: {line.strip()}")
 
-# FAILS: Trying to read a file that doesn't exist
-# with open("missing_grades.csv", "r") as f:
-#     data = f.read()  # FileNotFoundError: [Errno 2] No such file or directory
-import io
-# PROPER EXCEPTION HANDLING:
-# try:
-#     with open("roster.txt", "r") as f:
-#         f.write("6. John\n") # io.UnsupportedOperation: not writable
 
-#     # with open("missing_grades.csv", "r") as f: # FileNotFoundError
-#     #     data = f.read()
-# except FileNotFoundError:
-#     print("Caught FileNotFoundError: Please verify the file path!")
-# except io.UnsupportedOperation:
-#     print('Check your permissions!')
-# except: # this catches all other kinds of errors
-#     print('something went wrong, but the file was found and permissions were okay')
+# # ==========================================
+# # 5. COMMON ERRORS
+# # ==========================================
+# # print("\n--- 5. Common Errors ---")
+
+# # # FAILS: Trying to write to a file opened in read mode
+# # with open("roster.txt", "r") as f:
+# #     f.write("6. John\n") # io.UnsupportedOperation: not writable
+
+# # FAILS: Trying to read a file that doesn't exist
+# # with open("missing_grades.csv", "r") as f:
+# #     data = f.read()  # FileNotFoundError: [Errno 2] No such file or directory
+# import io
+# # PROPER EXCEPTION HANDLING:
+# # try:
+# #     with open("roster.txt", "r") as f:
+# #         f.write("6. John\n") # io.UnsupportedOperation: not writable
+
+# #     # with open("missing_grades.csv", "r") as f: # FileNotFoundError
+# #     #     data = f.read()
+# # except FileNotFoundError:
+# #     print("Caught FileNotFoundError: Please verify the file path!")
+# # except io.UnsupportedOperation:
+# #     print('Check your permissions!')
+# # except: # this catches all other kinds of errors
+# #     print('something went wrong, but the file was found and permissions were okay')

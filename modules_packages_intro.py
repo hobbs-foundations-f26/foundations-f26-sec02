@@ -13,12 +13,17 @@
 # 0. IMPORTING BUILT-IN MODULES
 # ==========================================
 print("--- 0. Importing Built-in Modules ---")
+
+
 # Python comes with a "batteries included" standard library.
-import math
-import random
+import sys 
+print('\n'.join(sys.path))
+
 
 
 # Access functions inside a module using dot notation
+import math
+
 print(f"Pi is approximately: {math.pi}")
 # the square root is not built into the core language, but is available in the math module
 # python by itself can only compute: +, -, *, /, **, //, %
@@ -26,6 +31,8 @@ print(f"Square root of 144: {math.sqrt(144)}")
 
 
 # Working with random things
+import random
+
 print(f"Random number between 1-10: {random.randint(1, 10)}") # rand integer between [1,10]
 print(f"Random float between 0-1: {random.random()}") # random float between (0,1)
 print(f"Randomly shuffling a list: {random.shuffle([1,2,3,4,5])}") # shuffles a list **in place**
@@ -33,6 +40,7 @@ print(f"Randomly shuffling a list: {random.shuffle([1,2,3,4,5])}") # shuffles a 
 my_list = [1,2,3,4,5]
 random.shuffle(my_list) # shuffles a list **in place** (my_list itself changes in memory)
 print(f"Randomly shuffling a list: {my_list}") 
+
 # ==========================================
 # 1. IMPORT ALIASING (import X as Y)
 # ==========================================
@@ -44,7 +52,7 @@ import datetime as dt
 current_time = dt.datetime.now()
 print(f"Current timestamp: {current_time}")
 
-# NOTE: here are some common standard industry aliases:
+# # NOTE: here are some common standard industry aliases:
 import pandas as pd
 import numpy as np
 
@@ -58,10 +66,10 @@ print("\n--- 2. Specific Imports ---")
 # Instead of loading the whole module, import only the specific functions you need.
 # This allows you to drop the dot notation.
 
-import os # os for operating system, like file paths, directories, etc.
+# import os # os for operating system, like file paths, directories, etc.
 
-print(f"Current Working Directory: {os.getcwd()}")
-print(os.listdir()) # Lists files in the current folder
+# print(f"Current Working Directory: {os.getcwd()}")
+# print(os.listdir()) # Lists files in the current folder
 
 # vs
 
@@ -70,12 +78,17 @@ from os import getcwd, listdir
 print(f"Current Working Directory: {getcwd()}")
 print(listdir()) # Lists files in the current folder
 
-# FAILS: The danger of "Star Imports" (from math import *)
-# It clutters your namespace and can silently overwrite your own variables.
+# FAILS: 
+# if you import piecemeal then you can not use things you didn't import 
+# (or reference the larger module)
+# os.chdir('..')  # Will FAIL if only did "from os import getcwd, listdir"
+#
+# FAIL 2: The danger of "Star Imports" (from math import *)
+# It clutters your namespace and can silently overwrite your own variables
 # For example, if you had a variable named 'pi', 'from math import *' would overwrite it.
 # ALWAYS avoid star imports in production code.
 # from os import * # DO NOT DO THIS IN REAL CODE
-# # vs
+# # # vs
 # import os  # Just take the whole thing like this if you need to
 
 
